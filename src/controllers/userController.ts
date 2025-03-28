@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userModel } from "../model/AuthModel";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { tokenModel } from "../model/TokenModel";
 import { addMinutes } from "date-fns";
 import { EnvStrings } from "../services";
@@ -8,11 +8,11 @@ import { EnvStrings } from "../services";
 export const createAccount = async (req: Request, res: Response) => {
   const { fullname, password } = req.body;
 
-  const hash_password = await bcrypt.hash(password, 10);
-
   let STATUS_CODE: number = 201;
 
   try {
+    const salt = bcrypt.genSaltSync(10);
+    const hash_password = bcrypt.hashSync(password, salt);
     let users = new userModel({
       fullname: fullname,
       email: req.body.email.toLowerCase(),
