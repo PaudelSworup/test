@@ -14,3 +14,5 @@ app.listen(EnvStrings.PORT, () => {
   console.log(`server listening on ${EnvStrings.PORT}`);
   EnvStrings.connectToDatabase();
 });
+
+// "src": "/(.*)",
