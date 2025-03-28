@@ -37,18 +37,18 @@ export const createAccount = async (req: Request, res: Response) => {
       throw new Error("Something went wrong!");
     }
 
-    EnvStrings.sendEmail({
-      from: "e-stotre <estorenepal@gmail.com>",
-      to: users.email,
-      subject: "Account creation successful",
-      html: `  
-        <h2>Account creation successful</h2>
-        <h2>Hello <strong>${users.fullname}</strong>, <br/></h2> 
-        <p style='font-size:20px;'>your account has been created.Activate your account to continue</p>
-        <br>
-        <p>your activation url is http://localhost:3030/api/auth/verify/${token.token}
-        `,
-    });
+    // EnvStrings.sendEmail({
+    //   from: "e-stotre <estorenepal@gmail.com>",
+    //   to: users.email,
+    //   subject: "Account creation successful",
+    //   html: `
+    //     <h2>Account creation successful</h2>
+    //     <h2>Hello <strong>${users.fullname}</strong>, <br/></h2>
+    //     <p style='font-size:20px;'>your account has been created.Activate your account to continue</p>
+    //     <br>
+    //     <p>your activation url is http://localhost:3030/api/auth/verify/${token.token}
+    //     `,
+    // });
 
     res.status(STATUS_CODE).json({
       success: true,
