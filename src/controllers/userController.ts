@@ -13,6 +13,7 @@ export const createAccount = async (req: Request, res: Response) => {
   try {
     const salt = bcrypt.genSaltSync(10);
     const hash_password = bcrypt.hashSync(password, salt);
+
     let users = new userModel({
       fullname: fullname,
       email: req.body.email.toLowerCase(),
@@ -58,7 +59,7 @@ export const createAccount = async (req: Request, res: Response) => {
     STATUS_CODE = 500;
     res.status(STATUS_CODE).json({
       success: false,
-      error: "Internal Server Error",
+      error: err?.message,
     });
   }
 };
