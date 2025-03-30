@@ -54,9 +54,9 @@ export const createAccount = async (req: Request, res: Response) => {
     res.status(STATUS_CODE).json({
       success: true,
       data: {
-        fullname: fullname,
-        email: req.body.email.toLowerCase(),
-        password: hash_password,
+        fullname: users.fullname,
+        email: users.email,
+        password: users.password,
       },
       message: "Account created. Please activate to log in.",
     });
