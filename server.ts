@@ -1,7 +1,7 @@
 import express from "express";
-import { demoroutes, userRoutes } from "./routes";
+import { demoroutes, userRoutes } from "./src/routes";
 import morgan from "morgan";
-import { EnvStrings } from "./services";
+import { EnvStrings } from "./src/services";
 import cors from "cors";
 const app = express();
 
