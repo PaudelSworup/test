@@ -16,7 +16,7 @@ const tokenSchema = new mongoose.Schema<IToken>({
 
   userId: {
     type: ObjectId,
-    ref: "USERS",
+    ref: "Users",
     required: true,
   },
 
@@ -27,6 +27,6 @@ const tokenSchema = new mongoose.Schema<IToken>({
 });
 
 export const tokenModel: Model<IToken> = mongoose.model<IToken>(
-  "token",
+  "Token",
   tokenSchema
 );

@@ -43,6 +43,6 @@ const authSchema = new mongoose.Schema<IUser>(
 );
 
 export const userModel: Model<IUser> = mongoose.model<IUser>(
-  "USERS",
+  "Users",
   authSchema
 );
