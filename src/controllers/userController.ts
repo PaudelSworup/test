@@ -14,29 +14,29 @@ export const createAccount = async (req: Request, res: Response) => {
     const salt = bcrypt.genSaltSync(10);
     const hash_password = bcrypt.hashSync(password, salt);
 
-    let users = new userModel({
-      fullname: fullname,
-      email: req.body.email.toLowerCase(),
-      password: hash_password,
-    });
+    // let users = new userModel({
+    //   fullname: fullname,
+    //   email: req.body.email.toLowerCase(),
+    //   password: hash_password,
+    // });
 
-    users = await users.save();
+    // users = await users.save();
 
-    if (!users) {
-      throw new Error("Something went wrong!");
-    }
+    // if (!users) {
+    //   throw new Error("Something went wrong!");
+    // }
 
-    let token = new tokenModel({
-      token: crypto.randomUUID(),
-      userId: users._id,
-      expiresIn: addMinutes(Date.now(), 120),
-    });
+    // let token = new tokenModel({
+    //   token: crypto.randomUUID(),
+    //   userId: users._id,
+    //   expiresIn: addMinutes(Date.now(), 120),
+    // });
 
-    token = await token.save();
+    // token = await token.save();
 
-    if (!token) {
-      throw new Error("Something went wrong!");
-    }
+    // if (!token) {
+    //   throw new Error("Something went wrong!");
+    // }
 
     // EnvStrings.sendEmail({
     //   from: "e-stotre <estorenepal@gmail.com>",
@@ -53,6 +53,11 @@ export const createAccount = async (req: Request, res: Response) => {
 
     res.status(STATUS_CODE).json({
       success: true,
+      data: {
+        fullname: fullname,
+        email: req.body.email.toLowerCase(),
+        password: hash_password,
+      },
       message: "Account created. Please activate to log in.",
     });
   } catch (err: any) {
