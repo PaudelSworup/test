@@ -36,7 +36,7 @@ export class EnvStrings {
       });
   }
 
-  //email method
+  //sending email method
   static sendEmail(options: EmailOptions) {
     const transport = nodemailer.createTransport({
       service: "gmail",
