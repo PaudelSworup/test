@@ -30,12 +30,12 @@ jobs:
 
       - name: Build Project
         env:
-          PORT: ${{ secrets.BASE_URL }}
-          DATABASE: ${{ secrets.MONGODB_URI }}
-          GMAIL_HOST: ${{ secrets.GMAIL_HOST }}
-          GMAIL_PORT: ${{ secrets.GMAIL_PORT }}
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          vercel_port: ${{ secrets.PORT }}
+          vercel_db: ${{ secrets.DATABASE }}
+          vercel-gmail-host: ${{ secrets.GMAIL_HOST }}
+          vercel-gmail-port: ${{ secrets.GMAIL_PORT }}
+          vercel-gmail-user: ${{ secrets.GMAIL_USER }}
+          vercel-app-password: ${{ secrets.APP_PASSWORD }}
         run: npm run build
 
   deploy:
@@ -52,9 +52,9 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          PORT: ${{ secrets.BASE_URL }}
-          DATABASE: ${{ secrets.MONGODB_URI }}
-          GMAIL_HOST: ${{ secrets.GMAIL_HOST }}
-          GMAIL_PORT: ${{ secrets.GMAIL_PORT }}
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          vercel-port: ${{ secrets.PORT }}
+          vercel-db: ${{ secrets.DATABASE }}
+          vercel-gmail-host: ${{ secrets.GMAIL_HOST }}
+          vercel-gmail-port: ${{ secrets.GMAIL_PORT }}
+          vercel-gmail-user: ${{ secrets.GMAIL_USER }}
+          vercel-app-password: ${{ secrets.APP_PASSWORD }}
