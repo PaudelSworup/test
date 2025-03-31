@@ -8,9 +8,14 @@ on:
     branches:
       - main
 
+env:
+  CI: true
+
 jobs:
-  test:
+  build:
+    name: Build
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,13 +23,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
+      - name: Build Project
+        env:
+          PORT: ${{ secrets.BASE_URL }}
+          DATABASE: ${{ secrets.MONGODB_URI }}
+          GMAIL_HOST: ${{ secrets.GMAIL_HOST }}
+          GMAIL_PORT: ${{ secrets.GMAIL_PORT }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+        run: npm run build
+
   deploy:
-    needs: test
+    name: Deploy to Vercel
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -36,3 +52,9 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          PORT: ${{ secrets.BASE_URL }}
+          DATABASE: ${{ secrets.MONGODB_URI }}
+          GMAIL_HOST: ${{ secrets.GMAIL_HOST }}
+          GMAIL_PORT: ${{ secrets.GMAIL_PORT }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
