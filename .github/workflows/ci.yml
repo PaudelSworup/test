@@ -47,14 +47,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        env:
           vercel-port: ${{ secrets.PORT }}
           vercel-db: ${{ secrets.DATABASE }}
           vercel-gmail-host: ${{ secrets.GMAIL_HOST }}
           vercel-gmail-port: ${{ secrets.GMAIL_PORT }}
           vercel-gmail-user: ${{ secrets.GMAIL_USER }}
           vercel-app-password: ${{ secrets.APP_PASSWORD }}
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
