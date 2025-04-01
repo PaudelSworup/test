@@ -14,6 +14,8 @@ export const createAccount = async (req: Request, res: Response) => {
     const salt = bcrypt.genSaltSync(10);
     const hash_password = bcrypt.hashSync(password, salt);
 
+    res.status(201).send({ message: "aayo hai" });
+
     let users = new userModel({
       fullname: fullname,
       email: req.body.email.toLowerCase(),
