@@ -30,12 +30,12 @@ jobs:
 
       - name: Build Project
         env:
-          vercel_port: ${{ secrets.PORT }}
-          vercel_db: ${{ secrets.DATABASE }}
-          vercel-gmail-host: ${{ secrets.GMAIL_HOST }}
-          vercel-gmail-port: ${{ secrets.GMAIL_PORT }}
-          vercel-gmail-user: ${{ secrets.GMAIL_USER }}
-          vercel-app-password: ${{ secrets.APP_PASSWORD }}
+          PORT: ${{ secrets.PORT }}
+          DATABASE: ${{ secrets.DATABASE }}
+          GMAIL_HOST: ${{ secrets.GMAIL_HOST }}
+          GMAIL_PORT: ${{ secrets.GMAIL_PORT }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
         run: npm run build
 
   deploy:
@@ -48,12 +48,12 @@ jobs:
 
       - name: Deploy to Vercel
         env:
-          vercel-port: ${{ secrets.PORT }}
-          vercel-db: ${{ secrets.DATABASE }}
-          vercel-gmail-host: ${{ secrets.GMAIL_HOST }}
-          vercel-gmail-port: ${{ secrets.GMAIL_PORT }}
-          vercel-gmail-user: ${{ secrets.GMAIL_USER }}
-          vercel-app-password: ${{ secrets.APP_PASSWORD }}
+          PORT: ${{ secrets.PORT }}
+          DATABASE: ${{ secrets.DATABASE }}
+          GMAIL_HOST: ${{ secrets.GMAIL_HOST }}
+          GMAIL_PORT: ${{ secrets.GMAIL_PORT }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}

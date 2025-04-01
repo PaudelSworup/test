@@ -12,7 +12,7 @@ interface EmailOptions {
 }
 
 export class EnvStrings {
-  static databaseConnection: string = process.env.DATABASE as string;
+  static DATABASE: string = process.env.DATABASE as string;
 
   static PORT: number = Number(process.env.PORT) || 5000;
 
@@ -27,7 +27,7 @@ export class EnvStrings {
   //database connection method
   static connectToDatabase() {
     mongoose
-      .connect(this.databaseConnection)
+      .connect(this.DATABASE)
       .then(() => {
         console.log("Connection established");
       })
