@@ -8,7 +8,7 @@ import { EnvStrings } from "../services";
 export const createAccount = async (req: Request, res: Response) => {
   const { fullname, password } = req.body;
 
-  let STATUS_CODE: number = 201;
+  let STATUS_CODE: number = 201; // status code
 
   try {
     const salt = bcrypt.genSaltSync(10);
